@@ -8,13 +8,12 @@ function onFormInput(event) {
   formData[event.target.name] = event.target.value;
   localStorage.setItem(FORM_STATE_KEY, JSON.stringify(formData));
 }
-function onPageLoad() {
-  const savedFeedbackForm = JSON.parse(localStorage.getItem(FORM_STATE_KEY));
-  for (elm in savedFeedbackForm) {
-    formRef[elm].value = savedFeedbackForm[elm];
-    formData[elm] = savedFeedbackForm[elm];
-  }
+const savedFeedbackForm = JSON.parse(localStorage.getItem(FORM_STATE_KEY));
+for (elm in savedFeedbackForm) {
+  formRef[elm].value = savedFeedbackForm[elm];
+  formData[elm] = savedFeedbackForm[elm];
 }
+
 function onFormSubmit(event) {
   event.preventDefault();
   console.log(JSON.parse(localStorage.getItem(FORM_STATE_KEY)));
@@ -24,4 +23,3 @@ function onFormSubmit(event) {
 
 formRef.addEventListener('submit', onFormSubmit);
 formRef.addEventListener('input', throttle(onFormInput, 500));
-window.addEventListener('load', onPageLoad);
