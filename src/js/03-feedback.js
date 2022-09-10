@@ -10,9 +10,9 @@ function onFormInput(event) {
 }
 function onPageLoad() {
   const savedFeedbackForm = JSON.parse(localStorage.getItem(FORM_STATE_KEY));
-  for (key in savedFeedbackForm) {
-    formRef[key].value = savedFeedbackForm[key];
-    formData[key] = savedFeedbackForm[key];
+  for (elm in savedFeedbackForm) {
+    formRef[elm].value = savedFeedbackForm[elm];
+    formData[elm] = savedFeedbackForm[elm];
   }
 }
 function onFormSubmit(event) {
